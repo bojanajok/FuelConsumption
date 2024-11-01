@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,6 +28,6 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany//1 User moze imati vise auta
-    private Set<Vehicle> vehicles;
+    @OneToMany(mappedBy = "user")//1 User moze imati vise auta, vlasnik veze je Vehicle, vrednost mapppedBy = user postoji kao polje u User entitetu
+    private Set<Vehicle> vehicles = new HashSet<>();
 }

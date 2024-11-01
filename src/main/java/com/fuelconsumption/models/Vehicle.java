@@ -17,7 +17,8 @@ public class Vehicle {
     private Long id;
 
     @Column(name = "fuelType")
-    private Enum FuelType;
+    @Enumerated(EnumType.STRING)
+    private FuelType fuelType;
 
     @Column(name = "productionYear")
     private int productionYear;
@@ -26,7 +27,8 @@ public class Vehicle {
     private int powerEngine;
 
     @Column(name = "gearingType")
-    private Enum GearingType;
+    @Enumerated(EnumType.STRING)
+    private GearingType gearingType;
 
     @Column(name = "tankCapacity")
     private int tankCapacity;
@@ -37,7 +39,7 @@ public class Vehicle {
     @Column(name = "vehicleModel")
     private VehicleModel vehicleModel;//X5, Insignia...
 
-    @ManyToOne
-    @JoinColumn( name = "user_id" , nullable = false) // foreign key za Vehicle tabelu je user_id
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "user_id" , nullable = false) // foreign key za Vehicle tabelu je user_id. Vehicle referencira korisnika user_id.
     private User user;
 }

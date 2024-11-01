@@ -18,6 +18,7 @@ public class VehicleModel {
 
     private String model; //X5, Insignia...
 
-    @OneToMany//da li je potrebno ovde naglasiti ako je vec napisana veza @ManyToOne u VehicleBrand klasi
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicleBrand_id", nullable = false)
     private VehicleBrand vehicleBrand;
 }

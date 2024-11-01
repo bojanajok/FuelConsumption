@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -17,7 +20,7 @@ public class VehicleBrand {
     private Long id;
 
     private String brand;//BMW, Audi, Opel
-    @ManyToOne(fetch = FetchType.EAGER)//iz baze se zajedno sa markom auta dovlaci i model
-    @JoinColumn(name = "vehicleModel_id", nullable = false)
-    private VehicleModel vehicleModel;
+
+    @OneToMany(mappedBy = "vehicleBrand", fetch = FetchType.EAGER)//mappedBy polje treba da se podudara sa imenom polja iz VehicleModel entiteta jer jer to referenca na VehicleBrand iz VehicleModel entiteta
+    private Set<VehicleModel> vehicleModels = new HashSet<>();
 }
