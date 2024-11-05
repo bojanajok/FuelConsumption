@@ -33,10 +33,4 @@ public class User {
     @OneToMany(mappedBy = "user")//1 User moze imati vise auta, vlasnik veze je Vehicle, vrednost mapppedBy = user postoji kao polje u User entitetu
     private Set<Vehicle> vehicles = new HashSet<>();
 
-    //proba
-    User user = User.builder()
-            .username("pera")
-            .email("peric")
-            .password("test")
-            .build();
 }

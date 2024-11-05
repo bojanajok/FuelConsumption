@@ -27,16 +27,19 @@ public class Vehicle {
     private int powerEngine;
 
     @Column(name = "gearingType")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING) //naglašava da je polje gearingType tipa Enum
     private GearingType gearingType;
 
     @Column(name = "tankCapacity")
     private int tankCapacity;
 
-    @Column(name = "vehicleBrand")
+    @ManyToOne(fetch = FetchType.EAGER) //uvek kada medju poljima entiteta postoji drugi entitet treba da pise relacija izmedju entiteta kako bi JPA ispravno mapirao entitete na objekte u bazi
+    @JoinColumn(name = "vehicle_brand_id", nullable = false)//kolona u bazi vehicle se zove "vehicle_brand_id" i predstavlja strani kljuc
     private VehicleBrand vehicleBrand;//BMW, Audi, Opel...
 
-    @Column(name = "vehicleModel")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "vehicle_model_id", nullable = false)
+    //@Column(name = "vehicleModel")
     private VehicleModel vehicleModel;//X5, Insignia...
 
     @ManyToOne(fetch = FetchType.EAGER)
