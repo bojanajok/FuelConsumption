@@ -17,7 +17,8 @@ public class VehicleBrand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private Long brandId;
 
     private String brand;//BMW, Audi, Opel
 

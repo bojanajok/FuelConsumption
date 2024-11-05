@@ -2,6 +2,7 @@ package com.fuelconsumption.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table( name = "users")
 public class User {
 
@@ -30,4 +32,11 @@ public class User {
 
     @OneToMany(mappedBy = "user")//1 User moze imati vise auta, vlasnik veze je Vehicle, vrednost mapppedBy = user postoji kao polje u User entitetu
     private Set<Vehicle> vehicles = new HashSet<>();
+
+    //proba
+    User user = User.builder()
+            .username("pera")
+            .email("peric")
+            .password("test")
+            .build();
 }

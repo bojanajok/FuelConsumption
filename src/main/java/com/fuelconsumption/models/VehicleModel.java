@@ -14,7 +14,8 @@ public class VehicleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private Long modelId;
 
     private String model; //X5, Insignia...
 
